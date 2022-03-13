@@ -4,6 +4,7 @@ using UnityEngine.Rendering;
 public partial class CameraRenderer
 {
     const string bufferName = "Render Camera";
+    //只渲染DefaultUnlit
     static ShaderTagId unlitShaderTagId = new ShaderTagId("SRPDefaultUnlit");
 
     ScriptableRenderContext context;
@@ -20,27 +21,40 @@ public partial class CameraRenderer
         this.context = context;
         this.camera = camera;
 
+        PrepareBuffer();
+        //渲染场景中的UI几何图形
         PrepareForSceneWindow();
+
+        //获取相机的裁剪参数，如果相机无法渲染，返回false
         if (!Cull())
             return;
 
-        SetUp();
+        Setup();
+        //渲染可见物体天空盒，透明，不透明
         DrawVisibleGeometry();
+        //渲染不支持的shader
         DrawUnsupportShaders();
+        //渲染Gizmos
         DrawGizmos();
         Submit();
     }
 
-    void SetUp()
+    void Setup()
     {
+        //设置相机参数
         context.SetupCameraProperties(camera);
-        buffer.ClearRenderTarget(true, true, Color.clear);
-        buffer.BeginSample(bufferName);
+        CameraClearFlags flags = camera.clearFlags;
+
+        //清除缓冲区
+        buffer.ClearRenderTarget(flags <= CameraClearFlags.Depth, flags == CameraClearFlags.Color,
+                                    flags == CameraClearFlags.Color ? camera.backgroundColor.linear : Color.clear);
+        buffer.BeginSample(SampleName);
         ExecuteBuffer();
     }
 
     void DrawVisibleGeometry()
     {
+        //渲染的排序设置
         var sortingSettings = new SortingSettings(camera)
         {
             criteria = SortingCriteria.CommonOpaque
@@ -51,17 +65,16 @@ public partial class CameraRenderer
 
         context.DrawSkybox(camera);
 
+        //后渲染透明物体,否则会被天空盒挡住。
         sortingSettings.criteria = SortingCriteria.CommonTransparent;
         drawingSettings.sortingSettings = sortingSettings;
         filteringSettings.renderQueueRange = RenderQueueRange.transparent;
         context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
     }
 
-
-
     void Submit()
     {
-        buffer.EndSample(bufferName);
+        buffer.EndSample(SampleName);
         ExecuteBuffer();
         context.Submit();
     }
