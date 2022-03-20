@@ -16,7 +16,7 @@ public partial class CameraRenderer
         name = bufferName
     };
 
-    public void Render(ScriptableRenderContext context, Camera camera)
+    public void Render(ScriptableRenderContext context, Camera camera , bool useDynamicBatching, bool useGPUInstancing)
     {
         this.context = context;
         this.camera = camera;
@@ -31,7 +31,7 @@ public partial class CameraRenderer
 
         Setup();
         //渲染可见物体天空盒，透明，不透明
-        DrawVisibleGeometry();
+        DrawVisibleGeometry(useDynamicBatching, useGPUInstancing);
         //渲染不支持的shader
         DrawUnsupportShaders();
         //渲染Gizmos
@@ -52,14 +52,18 @@ public partial class CameraRenderer
         ExecuteBuffer();
     }
 
-    void DrawVisibleGeometry()
+    void DrawVisibleGeometry(bool useDynamicBatching,bool useGPUInstancing)
     {
         //渲染的排序设置
         var sortingSettings = new SortingSettings(camera)
         {
             criteria = SortingCriteria.CommonOpaque
         };
-        var drawingSettings = new DrawingSettings(unlitShaderTagId, sortingSettings);
+        var drawingSettings = new DrawingSettings(unlitShaderTagId, sortingSettings)
+        {
+            enableDynamicBatching = useDynamicBatching,
+            enableInstancing = useGPUInstancing
+        };
         var filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
         context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
 

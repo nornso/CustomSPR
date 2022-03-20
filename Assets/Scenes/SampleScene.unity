@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 37975781}
   - component: {fileID: 37975780}
   - component: {fileID: 37975779}
+  - component: {fileID: 37975783}
   m_Layer: 0
   m_Name: Sphereshader (1)
   m_TagString: Untagged
@@ -208,12 +209,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37975778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.32, y: 0, z: 0}
+  m_LocalPosition: {x: 6.24, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &37975783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37975778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3282511b0f3b9b429e772f851ec6a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.77517825, g: 1, b: 0.3066038, a: 1}
 --- !u!1 &251047727
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +240,7 @@ GameObject:
   - component: {fileID: 251047730}
   - component: {fileID: 251047729}
   - component: {fileID: 251047728}
+  - component: {fileID: 251047732}
   m_Layer: 0
   m_Name: Cubeshader (1)
   m_TagString: Untagged
@@ -264,7 +279,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 096b1d14691da514d868a11f74d1e99b, type: 2}
+  - {fileID: 2100000, guid: 1ce084cee1a0bdc478f8473fd3170fd9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -301,12 +316,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251047727}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.16, y: 1.62, z: -0.916}
+  m_LocalPosition: {x: 8.66, y: 1.67, z: -0.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &251047732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251047727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3282511b0f3b9b429e772f851ec6a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.772912, g: 0.8867924, b: 0.08784264, a: 0.5803922}
 --- !u!1 &432332388
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,6 +533,7 @@ GameObject:
   - component: {fileID: 620911002}
   - component: {fileID: 620911001}
   - component: {fileID: 620911000}
+  - component: {fileID: 620911004}
   m_Layer: 0
   m_Name: Sphereshader (3)
   m_TagString: Untagged
@@ -580,12 +609,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620910999}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.32, y: 0, z: 0}
+  m_LocalPosition: {x: 3.44, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &620911004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620910999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3282511b0f3b9b429e772f851ec6a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.3176471, g: 0.8965407, b: 0.94509804, a: 1}
 --- !u!1 &669141839
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,6 +944,7 @@ GameObject:
   - component: {fileID: 744128343}
   - component: {fileID: 744128342}
   - component: {fileID: 744128341}
+  - component: {fileID: 744128345}
   m_Layer: 0
   m_Name: Cubeshader
   m_TagString: Untagged
@@ -940,7 +983,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 096b1d14691da514d868a11f74d1e99b, type: 2}
+  - {fileID: 2100000, guid: 1ce084cee1a0bdc478f8473fd3170fd9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -977,12 +1020,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744128340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.08, y: 1.62, z: -0.916}
+  m_LocalPosition: {x: 8.92, y: 1.73, z: -0.916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &744128345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744128340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3282511b0f3b9b429e772f851ec6a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.30535775, g: 0.5690047, b: 0.8867924, a: 0.43137255}
 --- !u!1 &962398892
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,6 +1051,7 @@ GameObject:
   - component: {fileID: 962398895}
   - component: {fileID: 962398894}
   - component: {fileID: 962398893}
+  - component: {fileID: 962398897}
   m_Layer: 0
   m_Name: Sphereshader (6)
   m_TagString: Untagged
@@ -1070,12 +1127,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962398892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.32, y: 0, z: 0}
+  m_LocalPosition: {x: 7.442, y: 1.863, z: -3.099}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &962398897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962398892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3282511b0f3b9b429e772f851ec6a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6145463, g: 0.3176471, b: 0.94509804, a: 1}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,6 +1241,7 @@ GameObject:
   - component: {fileID: 1061417106}
   - component: {fileID: 1061417105}
   - component: {fileID: 1061417104}
+  - component: {fileID: 1061417108}
   m_Layer: 0
   m_Name: Sphereshader (2)
   m_TagString: Untagged
@@ -1246,12 +1317,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1061417103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.32, y: 0, z: 0}
+  m_LocalPosition: {x: 7.69, y: 1.71, z: -0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1061417108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061417103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3282511b0f3b9b429e772f851ec6a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.41424564, g: 0.94509804, b: 0.3176471, a: 1}
 --- !u!1 &1165581524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,6 +1348,7 @@ GameObject:
   - component: {fileID: 1165581527}
   - component: {fileID: 1165581526}
   - component: {fileID: 1165581525}
+  - component: {fileID: 1165581529}
   m_Layer: 0
   m_Name: Sphereshader (4)
   m_TagString: Untagged
@@ -1339,12 +1424,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165581524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.32, y: 0, z: 0}
+  m_LocalPosition: {x: 4.91, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1165581529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165581524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3282511b0f3b9b429e772f851ec6a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.3176471, g: 0.6340408, b: 0.94509804, a: 1}
 --- !u!1 &1182427563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,6 +1772,7 @@ GameObject:
   - component: {fileID: 1849924385}
   - component: {fileID: 1849924384}
   - component: {fileID: 1849924383}
+  - component: {fileID: 1849924387}
   m_Layer: 0
   m_Name: Sphereshader (5)
   m_TagString: Untagged
@@ -1749,12 +1848,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849924382}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.32, y: 0, z: 0}
+  m_LocalPosition: {x: 1.34, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1849924387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849924382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3282511b0f3b9b429e772f851ec6a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.9433962, g: 0.31594875, b: 0.31594875, a: 1}
 --- !u!1 &1942934416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,6 +1879,7 @@ GameObject:
   - component: {fileID: 1942934419}
   - component: {fileID: 1942934418}
   - component: {fileID: 1942934417}
+  - component: {fileID: 1942934421}
   m_Layer: 0
   m_Name: Sphereshader
   m_TagString: Untagged
@@ -1848,6 +1961,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1942934421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942934416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3282511b0f3b9b429e772f851ec6a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0.6745283, g: 1, b: 0.73190856, a: 1}
 --- !u!1 &1959192655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,7 +1992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1959192656
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1935,7 +2061,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959192655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.251, y: 0, z: 0}
+  m_LocalPosition: {x: 1.03, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1959,7 +2085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &2130665553
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2028,7 +2154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130665552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2, y: 0, z: 0}
+  m_LocalPosition: {x: -0.18, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
