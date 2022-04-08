@@ -14,6 +14,10 @@
 	{
 		Pass
 		{
+			Tags{
+				"LightMode" = "CustomLit"
+			}
+
 			Blend [_SrcBlend] [_DstBlend]
 			ZWrite [_ZWrite]
 			HLSLPROGRAM

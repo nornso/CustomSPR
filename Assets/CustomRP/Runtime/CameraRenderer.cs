@@ -6,6 +6,7 @@ public partial class CameraRenderer
     const string bufferName = "Render Camera";
     //只渲染DefaultUnlit
     static ShaderTagId unlitShaderTagId = new ShaderTagId("SRPDefaultUnlit");
+    static ShaderTagId litShaderTagId = new ShaderTagId("CustomLit");
 
     ScriptableRenderContext context;
     Camera camera;
@@ -16,7 +17,7 @@ public partial class CameraRenderer
         name = bufferName
     };
 
-    public void Render(ScriptableRenderContext context, Camera camera , bool useDynamicBatching, bool useGPUInstancing)
+    public void Render(ScriptableRenderContext context, Camera camera, bool useDynamicBatching, bool useGPUInstancing)
     {
         this.context = context;
         this.camera = camera;
@@ -52,7 +53,7 @@ public partial class CameraRenderer
         ExecuteBuffer();
     }
 
-    void DrawVisibleGeometry(bool useDynamicBatching,bool useGPUInstancing)
+    void DrawVisibleGeometry(bool useDynamicBatching, bool useGPUInstancing)
     {
         //渲染的排序设置
         var sortingSettings = new SortingSettings(camera)
@@ -64,6 +65,7 @@ public partial class CameraRenderer
             enableDynamicBatching = useDynamicBatching,
             enableInstancing = useGPUInstancing
         };
+        drawingSettings.SetShaderPassName(1, litShaderTagId);
         var filteringSettings = new FilteringSettings(RenderQueueRange.opaque);
         context.DrawRenderers(cullingResults, ref drawingSettings, ref filteringSettings);
 
