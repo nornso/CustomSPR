@@ -17,6 +17,8 @@ public partial class CameraRenderer
         name = bufferName
     };
 
+    Lighting lighting = new Lighting();
+
     public void Render(ScriptableRenderContext context, Camera camera, bool useDynamicBatching, bool useGPUInstancing)
     {
         this.context = context;
@@ -31,6 +33,8 @@ public partial class CameraRenderer
             return;
 
         Setup();
+        //光照设置
+        lighting.Setup(context, cullingResults);
         //渲染可见物体天空盒，透明，不透明
         DrawVisibleGeometry(useDynamicBatching, useGPUInstancing);
         //渲染不支持的shader

@@ -2,6 +2,9 @@
 #define CUSTOM_LIT_PASS_INCLUDED
 
 #include "../ShaderLibrary/Common.hlsl"
+#include "../ShaderLibrary/Surface.hlsl"
+#include "../ShaderLibrary/Light.hlsl"
+#include "../ShaderLibrary/Lighting.hlsl"
 
 TEXTURE2D(_BaseMap);
 SAMPLER(sampler_BaseMap);
@@ -21,7 +24,8 @@ struct Attributes{
 
 struct Varyings {
 	float4 positionCS : SV_POSITION;
-	float2 baseUV : VAR_BASE_UV;
+	float3 normalWS : VAR_NORMAL;
+	float2 baseUV : VARR_BASE_UV;
 	UNITY_VERTEX_INPUT_INSTANCE_ID
 };
 
@@ -31,8 +35,11 @@ Varyings LitPassVertex(Attributes input){
 	UNITY_TRANSFER_INSTANCE_ID(input, output);
 	float3 positionWS = TransformObjectToWorld(input.positionOS);
 	output.positionCS = TransformWorldToHClip(positionWS);
+    output.normalWS = TransformObjectToWorldNormal(input.normalOS);
+
 	float4 baseST = UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _BaseMap_ST);
 	output.baseUV = input.baseUV * baseST.xy + baseST.zw;
+
 	return output;
 }
 
@@ -44,7 +51,13 @@ float4 LitPassFragment(Varyings input) : SV_TARGET{
 	#if defined(_CLIPPING)
 		clip(base.a - UNITY_ACCESS_INSTANCED_PROP(UnityPerMaterial, _Cutoff));
 	#endif
-	return base;
+
+	Surface surface;
+	surface.normal = normalize(input.normalWS);
+	surface.color = base.rgb;
+	surface.alpha = base.a;
+	float3 color = GetLighting(surface);
+	return float4(color,surface.alpha);
 }
 
 #endif
