@@ -19,7 +19,7 @@ public partial class CameraRenderer
 
     Lighting lighting = new Lighting();
 
-    public void Render(ScriptableRenderContext context, Camera camera, bool useDynamicBatching, bool useGPUInstancing)
+    public void Render(ScriptableRenderContext context, Camera camera, bool useDynamicBatching, bool useGPUInstancing, ShadowSettings shadowSettings)
     {
         this.context = context;
         this.camera = camera;
@@ -29,13 +29,18 @@ public partial class CameraRenderer
         PrepareForSceneWindow();
 
         //获取相机的裁剪参数，如果相机无法渲染，返回false
-        if (!Cull())
+        if (!Cull(shadowSettings.maxDistance))
             return;
 
-        Setup();
+        buffer.BeginSample(SampleName);
+        ExecuteBuffer();
         //光照设置
-        lighting.Setup(context, cullingResults);
+        lighting.Setup(context, cullingResults, shadowSettings);
+        buffer.EndSample(SampleName);
+
+        Setup();
         //渲染可见物体天空盒，透明，不透明
+
         DrawVisibleGeometry(useDynamicBatching, useGPUInstancing);
         //渲染不支持的shader
         DrawUnsupportShaders();
@@ -86,6 +91,7 @@ public partial class CameraRenderer
     {
         buffer.EndSample(SampleName);
         ExecuteBuffer();
+        lighting.Cleanup();
         context.Submit();
     }
 
@@ -95,10 +101,11 @@ public partial class CameraRenderer
         buffer.Clear();
     }
 
-    bool Cull()
+    bool Cull(float maxShadowDistance)
     {
         if (camera.TryGetCullingParameters(out ScriptableCullingParameters p))
         {
+            p.shadowDistance = Mathf.Min(maxShadowDistance, camera.farClipPlane);
             cullingResults = context.Cull(ref p);
             return true;
         }

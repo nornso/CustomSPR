@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Opaque
+  m_Name: LitTransparent
   m_Shader: {fileID: 4800000, guid: 30f30fdf9585ad544a575ac8e0ada780, type: 3}
   m_ShaderKeywords: _PREMULTIPLY_ALPHA
   m_LightmapFlags: 4
