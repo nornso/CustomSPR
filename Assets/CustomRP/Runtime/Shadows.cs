@@ -20,7 +20,7 @@ public class Shadows
     static string[] directionFilterKeywords = {
         "_DIRECTIONAL_PCF3",
         "_DIRECTIONAL_PCF5",
-        "_DIRECTIONAL_PCF7",
+        "_DIRECTIONAL_PCF7"
     };
 
     CommandBuffer buffer = new CommandBuffer

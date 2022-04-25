@@ -1,6 +1,19 @@
 ﻿#ifndef CUSTOM_SHADOWS_INCLUDED
 #define CUSTOM_SHADOWS_INCLUDED
 
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Shadow/ShadowSamplingTent.hlsl"
+
+#if defined(_DIRECTIONAL_PCF3)
+	#define DIRECTIONAL_FILTER_SAMPLES 4
+	#define DIRECTIONAL_FILTER_SETUP SampleShadow_ComputeSamples_Tent_3x3
+#elif defined(_DIRECTIONAL_PCF5)
+	#define DIRECTIONAL_FILTER_SAMPLES 9
+	#define DIRECTIONAL_FILTER_SETUP SampleShadow_ComputeSamples_Tent_5x5
+#elif defined(_DIRECTIONAL_PCF7)
+	#define DIRECTIONAL_FILTER_SAMPLES 16
+	#define DIRECTIONAL_FILTER_SETUP SampleShadow_ComputeSamples_Tent_7x7
+#endif
+
 #define MAX_SHADOWED_DIRECTIONAL_LIGHT_COUNT 4
 #define MAX_CASCADE_COUNT 4
 
@@ -56,8 +69,26 @@ ShadowData GetShadowData(Surface surfaceWS){
 }
 
 
+//采样方向阴影
 float SampleDirectionalShadowAtlas (float3 positionSTS) {
 	return SAMPLE_TEXTURE2D_SHADOW(_DirectionalShadowAtlas, SHADOW_SAMPLER, positionSTS);
+}
+
+//方向阴影过滤器
+float FilterDirectionalShadow (float3 positionSTS) {
+	#if defined(DIRECTIONAL_FILTER_SETUP)
+		float weights[DIRECTIONAL_FILTER_SAMPLES];
+		float2 positions[DIRECTIONAL_FILTER_SAMPLES];
+		float4 size = _ShadowAtlasSize.yyxx;
+		DIRECTIONAL_FILTER_SETUP(size, positionSTS.xy, weights, positions);
+		float shadow = 0;
+		for (int i = 0; i < DIRECTIONAL_FILTER_SAMPLES; i++) {
+			shadow += weights[i] * SampleDirectionalShadowAtlas(float3(positions[i].xy, positionSTS.z));
+		}
+		return shadow;
+	#else
+		return SampleDirectionalShadowAtlas(positionSTS);
+	#endif
 }
 
 //获取阴影强度
@@ -68,7 +99,7 @@ float GetDirectionalShadowAttenuation (DirectionalShadowData directional, Shadow
 
 	float3 normalBias = surfaceWS.normal * (directional.normalBias * _CascadeData[global.cascadeIndex].y);
 	float3 positionSTS = mul(_DirectionalShadowMatrices[directional.tileIndex],float4(surfaceWS.position + normalBias, 1.0)).xyz;
-	float shadow = SampleDirectionalShadowAtlas(positionSTS);
+	float shadow = FilterDirectionalShadow(positionSTS);
 	return lerp(1.0, shadow, directional.strength);
 }
 
