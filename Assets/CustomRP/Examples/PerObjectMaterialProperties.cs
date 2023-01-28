@@ -5,7 +5,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class PerObjectMaterialProperties : MonoBehaviour
 {
-    static int baseColorId = Shader.PropertyToID("_BaseColor"),
+    readonly int baseColorId = Shader.PropertyToID("_BaseColor"),
                cutoffID = Shader.PropertyToID("_Cutoff"),
                metallicId = Shader.PropertyToID("_Metallic"),
                smoothnessId = Shader.PropertyToID("_Smoothness");
